@@ -58,6 +58,7 @@ if fqdn
   hostsfile_entry 'localhost' do
     ip_address '127.0.0.1'
     hostname 'localhost'
+    priority 100
     action :append
   end
 
@@ -65,6 +66,7 @@ if fqdn
     ip_address node['hostname_cookbook']['hostsfile_ip']
     hostname fqdn
     aliases [hostname]
+    priority 99
     action :create
     notifies :reload, 'ohai[reload]', :immediately
   end
